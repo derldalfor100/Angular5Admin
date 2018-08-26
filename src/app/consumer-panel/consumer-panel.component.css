@@ -1,0 +1,8 @@
+.myClickableThingy {
+    cursor: pointer;
+}
+
+div {
+    z-index: 2;
+}
+

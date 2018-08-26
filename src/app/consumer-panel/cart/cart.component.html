@@ -1,0 +1,53 @@
+<table class="centered striped responsive-table"><!-- responsive-table-->
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>Item Name</th>
+        <th>Item Price($)</th>
+        <th class="">Amount</th>
+        <th class="">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <ng-container *ngFor="let d of data; let i = index">
+    <tr *ngIf="checks[i]">
+      <td>{{d.itemid}}</td>
+      <td>{{d.name}}</td>
+      <td>{{d.cost}}</td>
+      <td class="">
+            <input style="text-align:center; width:40%" class="input-field" #Amount min="1" max="30" name="quantity" step="1" value="1" type="number" [(ngModel)]="d.amount" (change)="onChange(d.itemid, d.amount)">
+      </td >
+      <td class="">{{d.description}}</td>
+      <td class=""> 
+          <a class="waves-effect waves-yellow btn" (click)="onRemove(i, d.itemid, d)">remove</a><!--(click)="onClick(d.id, i)"-->
+      </td>
+    </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+
+<a class="btn-floating btn-large cyan pulse" *ngIf="numItems != 0" (click)="onBuy()" ><i class="material-icons">check</i></a>
+
+
+<!--
+<br>
+<br>
+<ng-container *ngFor="let d of data; let i = index" >
+  <tr *ngIf="d.itemid == 5 || d.itemid == 7">
+    <td>{{d.itemid}}</td>
+    <td>WE R THE CHAMPIONS!!!</td>
+  </tr>
+ </ng-container>
+
+ <br>
+<br>
+<ng-container *ngFor="let n of checks" >
+  <tr>
+    <td>{{n}}</td>
+    <td>WE R THE CHAMPS</td>
+  </tr>
+ </ng-container>
+-->
+

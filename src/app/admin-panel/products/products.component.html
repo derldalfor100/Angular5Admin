@@ -1,0 +1,41 @@
+<div class="itemTable">
+    <label>Update name and price by click. Update description by keyup.</label>
+<table class="centered striped responsive-table"><!-- responsive-table-->
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>Item Name</th>
+        <th>Item Price($)</th>
+        <th class="">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let d of data; let i = index">
+      <td>{{d.id}}</td>
+      <td><input style="text-align:center" class="input-field" type="text" [(ngModel)]="d.name" (click)="onUpdate(20, d.id, d.name)"></td>
+      <td><input style="text-align:center; width:40%" class="input-field" name="quantity" step="1" min="1" type="number" [(ngModel)]="d.cost" [value]="ngModel" (click)="onUpdate(21, d.id, d.cost)"></td>
+      <td class=""><textarea rows="4" cols="50" (keyup)="onUpdate(22, d.id, d.description)" [(ngModel)]="d.description">
+        {{d.description}}
+        </textarea>
+        </td>
+      <td class=""> 
+          <a class="waves-effect waves-yellow btn" (click)="onClick(d.id)">Remove</a>
+      </td>
+    </tr>
+    <tr *ngFor="let a of count">
+      <td>{{maxId + 1}}</td>
+      <td><input style="text-align:center" class="input-field" type="text" [(ngModel)]="extra.name"></td>
+      <td><input style="text-align:center; width:40%" class="input-field" name="quantity" step="1" min="1" type="number" [(ngModel)]="extra.cost" [value]="ngModel"></td>
+      <td class=""><textarea rows="4" cols="50" [(ngModel)]="extra.description">
+
+        </textarea>
+        </td>
+      <td class=""> 
+          <a class="waves-effect waves-yellow btn" *ngIf="!disable()" (click)="onAdd()">Add</a>
+          <a class="waves-effect waves-yellow btn disabled" *ngIf="disable()">Add</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+    display: block;
+    
+}
+
+div:hover + footer {
+    display: none;
+}
+
+.myClickableThingy {
+    cursor: pointer;
+}

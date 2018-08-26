@@ -1,0 +1,16 @@
+th {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+a.disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.toast {
+    top: auto !important;
+    right: auto !important;
+    bottom: 10%;
+    left:27%;  
+}

@@ -1,0 +1,34 @@
+<div class="row">
+  <div  class="col s4">
+    <h2><ins><b>Users List:</b></ins></h2>
+    <ul *ngFor="let d of data; let i = index;"> 
+  <li *ngIf="!refresh[i]" (click)="onClick(d.name, d.id, i)"><a class="myClickableThingy">{{d.name}}</a></li>
+    </ul>
+  </div>
+  <div  class="col s7 right" *ngIf="clicked" id="pad"><h4>{{info.UserName}}</h4> <p>First Name: {{info.FirstName}}</p> <p>Last Name: {{info.LastName}}</p> <p>Role: {{info.Roles[0]}}</p><br>
+    <label class="center-align">At least 3 characters</label>
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="fname">
+        <label>First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="lname">
+        <label>Last Name</label>
+      </div>
+    </div>
+    <a class="waves-effect waves-light btn-small" *ngIf="!disable(fname.length, lname.length)" (click)="onName(info.UserName)"><i class="material-icons left">cloud</i>Update the Name</a>
+    <a class="waves-effect waves-light btn-small disabled" *ngIf="disable(fname.length, lname.length)"><i class="material-icons left">cloud</i>Update the Name</a>
+    <br> <br> 
+    <div class="switch">
+        <label>
+          Admin
+          <input type="checkbox" (click)="onRole(info.UserName)" [checked]="info.Roles[0] == 'Consumer'">
+          <span class="lever"></span>
+          Consumer
+        </label>
+      </div>
+    <br><br>
+    <a class="waves-effect waves-light btn-large" (click)="onDelete(info.UserName)"><i class="material-icons left">delete_forever</i>Delete <span class="hide-on-small-only">the</span> User</a>
+    </div>
+</div>

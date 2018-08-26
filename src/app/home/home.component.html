@@ -1,0 +1,70 @@
+<div class="navbar-fixed">
+<nav>
+  <div class="nav-wrapper">
+    <a  class="brand-logo center">
+      <i class="material-icons">child_care</i><span class="hide-on-med-and-down" >Welcome To</span> Mr. Robot</a>
+    <ul id="nav-mobile" class="right ">
+      <li class="hide-on-small-only" *ngIf="userService.roleMatch(['Consumer'])">
+        <a routerLink="/consumerPanel">Consumer <span class="hide-on-med-and-down" >Panel</span></a>
+      </li>
+      <li class="hide-on-small-only" *ngIf="userService.roleMatch(['Admin'])">
+        <a routerLink="/adminPanel">Admin <span class="hide-on-med-and-down" >Panel</span></a>
+      </li>
+      <li>
+        <a (click)="Logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+
+        
+
+<div class="row" *ngIf="userClaims">
+  <div class="col s12 m7">
+    <div class="card">
+      <div class="card-content">
+        <span>Username : {{userClaims.UserName}}</span>
+        <br>
+        <span>Email : {{userClaims.Email}}</span>
+        <br>
+        <span>Full Name : {{userClaims.FirstName}} {{userClaims.LastName}}</span>
+        <br>
+        <span>Logged On : {{userClaims.LoggedOn}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-about></app-about>
+
+<footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Mr. Robot</h5>
+          <p class="grey-text text-lighten-4"><i class="tiny material-icons">location_on</i> 217 E Broadway New York, NY 10002<br><br> Eliot Alderson:<br>"But I'm only a vigilante hacker by night. By day, just a regular cybersecurity engineer. Employee number ER28-0652"</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" routerLink="/season1">Season 1</a></li>
+            <li><a class="grey-text text-lighten-3" routerLink="/season2">Season 2</a></li>
+            <li><a class="grey-text text-lighten-3" routerLink="/season3">Season 3</a></li>
+            <li  *ngIf="userService.roleMatch(['Consumer'])">
+                <a class="grey-text text-lighten-3" routerLink="/consumerPanel">Consumer Panel</a>
+              </li>
+              <li  *ngIf="userService.roleMatch(['Admin'])">
+                <a class="grey-text text-lighten-3" routerLink="/adminPanel">Admin Panel</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2018 Copyright Text
+      <a class="grey-text text-lighten-4 right myClickableThingy" (click)="Logout()">Logout</a>
+      </div>
+    </div>
+  </footer>
