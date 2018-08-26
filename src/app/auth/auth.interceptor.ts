@@ -17,11 +17,11 @@ export class AuthInterceptor implements HttpInterceptor {
         if (localStorage.getItem('userToken') != null) {
             const clonedreq = req.clone({
                 headers: req.headers.set("Authorization", "Bearer " + localStorage.getItem('userToken'))
-            });
+            });// add the token to the user's http request 
             return next.handle(clonedreq)
                 .do(
                     succ => { },
-                    err => {
+                    err => {//take care of client side problems
                         if (err.status === 401)
                             this.router.navigateByUrl('/login');
                         else (err.status === 403)
